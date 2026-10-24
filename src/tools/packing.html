@@ -1,0 +1,30 @@
+<p class="callout"><strong>How it works:</strong> choose when you're travelling, your trip length and what you'll be doing. The list updates instantly — tick items off as you pack. Your ticks are saved only in this browser. Pair it with our full <a href="/guides/packing-list/">Switzerland packing guide</a>.</p>
+<form id="pack-form" class="tool-form" onsubmit="return false">
+  <fieldset><legend>Your trip</legend>
+    <div class="row">
+      <label>Season<select id="p-season"><option value="spring">Spring (Mar–May)</option><option value="summer">Summer (Jun–Aug)</option><option value="autumn" selected>Autumn (Sep–Nov)</option><option value="winter">Winter (Dec–Feb)</option></select></label>
+      <label>Trip length (nights)<input type="number" id="p-nights" min="1" max="60" value="10"></label>
+      <label>Laundry on the way?<select id="p-laundry"><option value="yes" selected>Yes, I'll do laundry</option><option value="no">No laundry</option></select></label>
+    </div>
+  </fieldset>
+  <fieldset><legend>Activities &amp; needs (select any)</legend>
+    <div class="chips" role="group" aria-label="Activities">
+      <button type="button" class="chip" data-act="onsen" aria-pressed="false">Onsen / ryokan</button>
+      <button type="button" class="chip" data-act="hiking" aria-pressed="false">Hiking</button>
+      <button type="button" class="chip" data-act="ski" aria-pressed="false">Skiing / snow</button>
+      <button type="button" class="chip" data-act="beach" aria-pressed="false">Beach / Okinawa</button>
+      <button type="button" class="chip" data-act="smart" aria-pressed="false">Nice restaurants</button>
+      <button type="button" class="chip" data-act="kids" aria-pressed="false">Travelling with kids</button>
+      <button type="button" class="chip" data-act="work" aria-pressed="false">Working remotely</button>
+      <button type="button" class="chip" data-act="meds" aria-pressed="false">Prescription meds</button>
+    </div>
+  </fieldset>
+</form>
+<div class="result" aria-live="polite">
+  <h2>Your packing list <small id="pack-count"></small></h2>
+  <div id="pack-list"></div>
+  <p><button type="button" class="btn" id="pack-print">Print list</button> <button type="button" class="btn btn-ghost" id="pack-reset">Clear ticks</button></p>
+</div>
+{{AD}}
+<h2>Packing tips for Switzerland</h2>
+<ul><li><strong>Pack light.</strong> Trains have limited luggage space and many stations involve stairs. Big bags over 160 cm total need a reserved seat on the Tokaido/Sanyo/Kyushu SBB CFF FFS & Panoramic Alpine Railways — see our <a href="/guides/shinkansen-seat-reservations/">SBB CFF FFS & Panoramic Alpine Railways guide</a>.</li><li><strong>Buy on arrival:</strong> toiletries, Heattech layers, umbrellas and most medicines are easy to find in Switzerland.</li><li><strong>Medicines:</strong> some common medicines are restricted in Switzerland; check the Ministry of Health rules before you fly (see our <a href="/guides/visa-and-entry/">entry guide</a>).</li><li><strong>Plugs:</strong> Switzerland uses Type A (two flat pins) at 100V — many devices are dual-voltage, but check.</li></ul>

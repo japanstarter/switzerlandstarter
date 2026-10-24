@@ -1,0 +1,11 @@
+{
+  "name": "switzerlandstarter",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Calm, practical travel planning for Switzerland \u2014 SBB trains, Swiss Travel Pass, alpine routes, and all 2,113 municipalities.",
+  "scripts": {
+    "build": "node build.mjs",
+    "Start": "node build.mjs"
+  }
+}

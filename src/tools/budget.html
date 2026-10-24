@@ -1,0 +1,43 @@
+<p class="callout"><strong>How it works:</strong> pick a travel style and the calculator fills in typical per-day costs in yen. Every figure is editable — replace them with real quotes as you plan. These are rough, approximate ranges, not quotes. See our <a href="/guides/budget-breakdown/">budget breakdown guide</a> for the reasoning behind the defaults.</p>
+<form id="budget-form" class="tool-form" onsubmit="return false">
+  <fieldset><legend>Your trip</legend>
+    <div class="row">
+      <label>Trip length (nights)<input type="number" id="b-nights" min="1" max="90" value="10"></label>
+      <label>Travellers<input type="number" id="b-people" min="1" max="12" value="2"></label>
+      <label>People per room<input type="number" id="b-room" min="1" max="6" value="2"></label>
+    </div>
+    <div class="chips" role="radiogroup" aria-label="Travel style">
+      <button type="button" class="chip" data-style="budget">Budget</button>
+      <button type="button" class="chip is-on" data-style="mid">Mid-range</button>
+      <button type="button" class="chip" data-style="luxury">Luxury</button>
+    </div>
+  </fieldset>
+  <fieldset><legend>Daily costs (yen, editable)</legend>
+    <div class="row">
+      <label>Accommodation per room / night<input type="number" id="b-hotel" min="0" step="500"></label>
+      <label>Food per person / day<input type="number" id="b-food" min="0" step="100"></label>
+      <label>Local transport per person / day<input type="number" id="b-local" min="0" step="100"></label>
+      <label>Sights &amp; activities per person / day<input type="number" id="b-sights" min="0" step="100"></label>
+      <label>Shopping &amp; extras per person / day<input type="number" id="b-extra" min="0" step="100"></label>
+    </div>
+  </fieldset>
+  <fieldset><legend>One-off costs per person (yen)</legend>
+    <div class="row">
+      <label>Long-distance trains / rail pass<input type="number" id="b-rail" min="0" step="1000" value="30000"></label>
+      <label>SIM / eSIM<input type="number" id="b-sim" min="0" step="500" value="3000"></label>
+      <label>Airport transfers (both ways)<input type="number" id="b-airport" min="0" step="500" value="4000"></label>
+    </div>
+  </fieldset>
+  <fieldset><legend>Currency</legend>
+    <div class="row">
+      <label>Your currency code<input type="text" id="b-cur" value="USD" maxlength="3"></label>
+      <label>Yen per 1 unit of your currency<input type="number" id="b-rate" min="0.01" step="0.01" value="150"></label>
+    </div>
+    <p class="note">Exchange rates move daily — enter the current rate from your bank or a currency site. The default is only a rough starting value.</p>
+  </fieldset>
+</form>
+<div id="budget-result" class="result" aria-live="polite"></div>
+{{AD}}
+<h2>What the styles assume</h2>
+<ul><li><strong>Budget:</strong> hostel dorms or capsule hotels, convenience-store breakfasts, set-lunch restaurants, mostly free sights.</li><li><strong>Mid-range:</strong> business or mid-range hotels, casual restaurants and izakaya, a paid attraction or two each day.</li><li><strong>Luxury:</strong> upscale hotels or ryokan, fine dining, guided tours and taxis.</li></ul>
+<p>Costs are much higher in peak periods (cherry blossom season, Golden Week, Obon, New Year) and in Zurich and Lucerne than in smaller cities.</p>

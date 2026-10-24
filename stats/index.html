@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="google-adsense-account" content="ca-pub-6789890038965479">
+<meta name="google-site-verification" content="MpcD5gj0joVI_RP1MZQyt_tlpD4gYmk4A0NazRfdsDo" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<title>Visitor &amp; Page Click Analytics | JapanStarter</title>
+<style>
+  :root {
+    --bg: #0b0e14;
+    --panel: #131822;
+    --panel2: #1a2130;
+    --line: rgba(255,255,255,0.09);
+    --ink: #f1f5f9;
+    --mute: #94a3b8;
+    --ac: #ef4444;
+    --ac2: #f97316;
+    --ok: #22c55e;
+    --err: #ef4444;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font: 15px/1.55 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 24px 16px 64px;
+  }
+  .wrap { max-width: 1220px; margin: 0 auto; }
+  .hdr {
+    display: flex; flex-wrap: wrap; gap: 14px; align-items: center; justify-content: space-between;
+    padding-bottom: 18px; margin-bottom: 22px; border-bottom: 1px solid var(--line);
+  }
+  .hdr h1 { font-size: clamp(1.35rem, 2.6vw, 1.85rem); font-weight: 800; letter-spacing: -0.02em; }
+  .hdr .sub { color: var(--mute); font-size: 0.88rem; margin-top: 2px; }
+  .hdr-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .btn, select, input {
+    font: inherit; font-size: 0.88rem; border-radius: 10px; border: 1px solid var(--line);
+    background: var(--panel); color: var(--ink); padding: 8px 13px;
+  }
+  .btn { cursor: pointer; font-weight: 600; transition: 0.18s; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+  .btn:hover { border-color: var(--ac); background: var(--panel2); }
+  .btn-primary { background: linear-gradient(135deg, var(--ac), var(--ac2)); color: #0b0e14; border-color: transparent; font-weight: 700; }
+  .btn-primary:hover { filter: brightness(1.07); background: linear-gradient(135deg, var(--ac), var(--ac2)); }
+  #authGate {
+    max-width: 430px; margin: 72px auto; padding: 28px 24px; border-radius: 18px;
+    background: var(--panel); border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+  }
+  #authGate h2 { font-size: 1.3rem; margin-bottom: 6px; }
+  #authGate p { color: var(--mute); font-size: 0.88rem; margin-bottom: 18px; }
+  #authForm { display: grid; gap: 12px; }
+  #authForm input { width: 100%; padding: 11px 14px; font-size: 0.95rem; background: #0b0e14; }
+  .err-msg { color: var(--err); font-size: 0.84rem; margin-top: 6px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .kpi {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px;
+    position: relative; overflow: hidden;
+  }
+  .kpi::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: linear-gradient(180deg, var(--ac), var(--ac2));
+  }
+  .kpi .lbl { color: var(--mute); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+  .kpi .val { font-size: 1.75rem; font-weight: 800; margin-top: 4px; font-variant-numeric: tabular-nums; }
+  .kpi .note { color: var(--mute); font-size: 0.78rem; margin-top: 3px; }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: 16px; margin-bottom: 16px; }
+  .grid3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px; margin-bottom: 16px; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 18px; min-width: 0; }
+  .panel h3 { font-size: 1.02rem; font-weight: 700; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
+  .panel .p-sub { color: var(--mute); font-size: 0.8rem; margin-bottom: 14px; }
+  .tbl-wrap { overflow-x: auto; max-height: 440px; border-radius: 10px; border: 1px solid var(--line); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.86rem; font-variant-numeric: tabular-nums; }
+  th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+  th { background: var(--panel2); color: var(--mute); font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.05em; position: sticky; top: 0; }
+  th.num, td.num { text-align: right; white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  .bar-list { display: grid; gap: 9px; }
+  .bar-row { display: grid; grid-template-columns: minmax(110px, 44%) 1fr auto; gap: 10px; align-items: center; font-size: 0.85rem; }
+  .bar-row .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 500; }
+  .bar-row .track { height: 9px; border-radius: 99px; background: rgba(255,255,255,0.06); overflow: hidden; }
+  .bar-row .fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--ac), var(--ac2)); }
+  .bar-row .cnt { font-weight: 700; font-variant-numeric: tabular-nums; min-width: 42px; text-align: right; }
+  .chart-svg { width: 100%; height: 210px; display: block; }
+  .empty { color: var(--mute); font-size: 0.86rem; padding: 16px 0; text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="authGate">
+    <h2>🔒 Analytics Dashboard</h2>
+    <p>Enter the analytics password for <b>japanstarter.com</b> to view real-time visitors and page clicks.</p>
+    <form id="authForm">
+      <input type="password" id="keyInput" placeholder="Analytics password" required autocomplete="current-password">
+      <button type="submit" class="btn btn-primary">Unlock Analytics →</button>
+      <button type="button" class="btn" id="recover-btn" style="justify-content:center;width:100%">✉ Email Password to Owner Inbox</button>
+      <div id="recoverMsg" style="color:var(--ok);font-size:0.84rem;margin-top:4px" hidden></div>
+      <div id="authErr" class="err-msg" hidden>Invalid password. Please try again.</div>
+    </form>
+  </div>
+
+  <div id="dashApp" hidden>
+    <header class="hdr">
+      <div>
+        <h1>JapanStarter · Analytics</h1>
+        <p class="sub">japanstarter.com · <span id="rangeLabel">Last 30 days</span> · Updated <span id="genTime">—</span></p>
+      </div>
+      <div class="hdr-actions">
+        <select id="rangeSel" aria-label="Date range">
+          <option value="1">Today</option>
+          <option value="7">Last 7 days</option>
+          <option value="30" selected>Last 30 days</option>
+          <option value="90">Last 90 days</option>
+          <option value="365">All time (365d)</option>
+        </select>
+        <button type="button" class="btn" id="refreshBtn">↻ Refresh</button>
+        <a class="btn" href="/" target="_blank" rel="noopener">↗ View Site</a>
+        <button type="button" class="btn" id="lockBtn">🔒 Lock</button>
+      </div>
+    </header>
+
+    <section class="kpis" id="kpiGrid"></section>
+
+    <div class="grid2">
+      <div class="panel">
+        <h3>Daily Visitors &amp; Page Clicks</h3>
+        <p class="p-sub">Unique daily visitors vs. total pages clicked per day</p>
+        <div id="trendChart"></div>
+      </div>
+      <div class="panel">
+        <h3>Most Clicked Pages</h3>
+        <p class="p-sub">Top URLs clicked and visited across japanstarter.com</p>
+        <div id="topPagesList" class="bar-list"></div>
+      </div>
+    </div>
+
+    <div class="grid3">
+      <div class="panel">
+        <h3>Top Referrers / Traffic Sources</h3>
+        <p class="p-sub">Where visitors arrived from</p>
+        <div id="refList" class="bar-list"></div>
+      </div>
+      <div class="panel">
+        <h3>Countries</h3>
+        <p class="p-sub">Visitor country breakdown (Cloudflare edge)</p>
+        <div id="countryList" class="bar-list"></div>
+      </div>
+      <div class="panel">
+        <h3>Devices</h3>
+        <p class="p-sub">Desktop vs. Mobile vs. Tablet</p>
+        <div id="deviceList" class="bar-list"></div>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:16px">
+      <h3>All Clicked Pages &amp; Routes (Full Breakdown)</h3>
+      <p class="p-sub">Every page path clicked during the selected period</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th>Page Path</th><th class="num">Page Clicks / Views</th><th class="num">% of Total</th></tr>
+          </thead>
+          <tbody id="pagesTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-top:16px">
+      <h3>Daily Log</h3>
+      <p class="p-sub">Day-by-day summary (America/Chicago)</p>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr><th>Date</th><th class="num">Unique Visitors</th><th class="num">Visits / Sessions</th><th class="num">Pages Clicked (Views)</th></tr>
+          </thead>
+          <tbody id="daysTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const STORAGE_KEY = "site_stats_key_v1";
+  const authGate = document.getElementById("authGate");
+  const dashApp = document.getElementById("dashApp");
+  const authForm = document.getElementById("authForm");
+  const keyInput = document.getElementById("keyInput");
+  const authErr = document.getElementById("authErr");
+  const rangeSel = document.getElementById("rangeSel");
+  const refreshBtn = document.getElementById("refreshBtn");
+  const lockBtn = document.getElementById("lockBtn");
+
+  let rawData = null;
+
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const fmt = (n) => Number(n || 0).toLocaleString();
+
+  async function fetchStats(key) {
+    const res = await fetch("/api/stats", {
+      headers: { "x-stats-key": key },
+      cache: "no-store",
+    });
+    if (!res.ok) throw new Error("Unauthorized");
+    return res.json();
+  }
+
+  function renderBars(el, obj, limit = 10) {
+    const entries = Object.entries(obj || {}).sort((a, b) => b[1] - a[1]).slice(0, limit);
+    if (!entries.length) {
+      el.innerHTML = '<div class="empty">No data recorded yet for this period.</div>';
+      return;
+    }
+    const max = Math.max(1, entries[0][1]);
+    el.innerHTML = entries.map(([k, v]) => {
+      const pct = Math.max(4, Math.round((v / max) * 100));
+      return `<div class="bar-row"><span class="name" title="${esc(k)}">${esc(k)}</span><div class="track"><div class="fill" style="width:${pct}%"></div></div><span class="cnt">${fmt(v)}</span></div>`;
+    }).join("");
+  }
+
+  function renderTrend(el, days) {
+    if (!days.length) {
+      el.innerHTML = '<div class="empty">No daily data yet.</div>';
+      return;
+    }
+    const w = 560, h = 195, padL = 36, padR = 14, padT = 16, padB = 28;
+    const cw = w - padL - padR, ch = h - padT - padB;
+    const maxVal = Math.max(5, ...days.map((d) => Math.max(d.pv || 0, d.uv || 0)));
+    const xAt = (i) => padL + (days.length === 1 ? cw / 2 : (i / (days.length - 1)) * cw);
+    const yAt = (v) => padT + ch - (v / maxVal) * ch;
+
+    const pvPts = days.map((d, i) => `${xAt(i).toFixed(1)},${yAt(d.pv || 0).toFixed(1)}`).join(" ");
+    const uvPts = days.map((d, i) => `${xAt(i).toFixed(1)},${yAt(d.uv || 0).toFixed(1)}`).join(" ");
+
+    el.innerHTML = `
+      <svg class="chart-svg" viewBox="0 0 ${w} ${h}">
+        <line x1="${padL}" y1="${padT}" x2="${w - padR}" y2="${padT}" stroke="rgba(255,255,255,0.07)"/>
+        <line x1="${padL}" y1="${padT + ch / 2}" x2="${w - padR}" y2="${padT + ch / 2}" stroke="rgba(255,255,255,0.07)"/>
+        <line x1="${padL}" y1="${padT + ch}" x2="${w - padR}" y2="${padT + ch}" stroke="rgba(255,255,255,0.14)"/>
+        <text x="4" y="${padT + 4}" fill="#94a3b8" font-size="10">${fmt(maxVal)}</text>
+        <text x="4" y="${padT + ch / 2 + 4}" fill="#94a3b8" font-size="10">${fmt(Math.round(maxVal / 2))}</text>
+        <text x="4" y="${padT + ch + 4}" fill="#94a3b8" font-size="10">0</text>
+        <polyline fill="none" stroke="var(--ac)" stroke-width="2.6" points="${pvPts}"/>
+        <polyline fill="none" stroke="#38bdf8" stroke-width="2.2" points="${uvPts}"/>
+        ${days.map((d, i) => `<circle cx="${xAt(i).toFixed(1)}" cy="${yAt(d.pv || 0).toFixed(1)}" r="3" fill="var(--ac)"><title>${d.date}: ${d.pv || 0} page clicks, ${d.uv || 0} visitors</title></circle>`).join("")}
+        <text x="${padL}" y="${h - 6}" fill="#94a3b8" font-size="10">${esc(days[0].date)}</text>
+        <text x="${w - padR}" y="${h - 6}" fill="#94a3b8" font-size="10" text-anchor="end">${esc(days[days.length - 1].date)}</text>
+      </svg>
+      <div style="display:flex;gap:16px;font-size:0.8rem;color:var(--mute);margin-top:6px">
+        <span><i style="display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--ac);margin-right:5px"></i>Pages Clicked / Views</span>
+        <span><i style="display:inline-block;width:10px;height:10px;border-radius:3px;background:#38bdf8;margin-right:5px"></i>Unique Visitors</span>
+      </div>
+    `;
+  }
+
+  function renderDashboard() {
+    if (!rawData) return;
+    const maxDays = Number(rangeSel.value || 30);
+    const allDays = Array.isArray(rawData.days) ? rawData.days : [];
+    const days = allDays.slice(-maxDays);
+
+    document.getElementById("rangeLabel").textContent = rangeSel.options[rangeSel.selectedIndex].text;
+    document.getElementById("genTime").textContent = new Date(rawData.generated || Date.now()).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+    let totalPV = 0, totalUV = 0, totalVisits = 0;
+    const paths = {}, refs = {}, countries = {}, devices = {};
+
+    for (const d of days) {
+      totalPV += Number(d.pv || 0);
+      totalUV += Number(d.uv || 0);
+      totalVisits += Number(d.visits || d.uv || 0);
+      for (const [k, v] of Object.entries(d.paths || {})) {
+        const c = typeof v === "object" ? Number(v.c || 0) : Number(v || 0);
+        paths[k] = (paths[k] || 0) + c;
+      }
+      for (const [k, v] of Object.entries(d.refs || {})) refs[k] = (refs[k] || 0) + Number(v || 0);
+      for (const [k, v] of Object.entries(d.countries || {})) countries[k] = (countries[k] || 0) + Number(v || 0);
+      for (const [k, v] of Object.entries(d.devices || {})) devices[k] = (devices[k] || 0) + Number(v || 0);
+    }
+
+    const todayRec = allDays[allDays.length - 1] || { pv: 0, uv: 0 };
+    const pagesPerVisit = totalVisits > 0 ? (totalPV / totalVisits).toFixed(2) : "0.00";
+    const uniquePagesCount = Object.keys(paths).length;
+
+    document.getElementById("kpiGrid").innerHTML = `
+      <div class="kpi"><div class="lbl">Unique Visitors</div><div class="val">${fmt(totalUV)}</div><div class="note">Today: ${fmt(todayRec.uv || 0)}</div></div>
+      <div class="kpi"><div class="lbl">Pages Clicked (Views)</div><div class="val">${fmt(totalPV)}</div><div class="note">Today: ${fmt(todayRec.pv || 0)}</div></div>
+      <div class="kpi"><div class="lbl">Total Visits / Sessions</div><div class="val">${fmt(totalVisits)}</div><div class="note">${pagesPerVisit} pages / visit</div></div>
+      <div class="kpi"><div class="lbl">Distinct Pages Clicked</div><div class="val">${fmt(uniquePagesCount)}</div><div class="note">Active URLs in period</div></div>
+    `;
+
+    renderTrend(document.getElementById("trendChart"), days);
+    renderBars(document.getElementById("topPagesList"), paths, 10);
+    renderBars(document.getElementById("refList"), refs, 8);
+    renderBars(document.getElementById("countryList"), countries, 8);
+    renderBars(document.getElementById("deviceList"), devices, 5);
+
+    const sortedPaths = Object.entries(paths).sort((a, b) => b[1] - a[1]);
+    document.getElementById("pagesTableBody").innerHTML = sortedPaths.length
+      ? sortedPaths.map(([p, c]) => {
+          const pct = totalPV > 0 ? ((c / totalPV) * 100).toFixed(1) + "%" : "0%";
+          return `<tr><td><a href="${esc(p)}" target="_blank" rel="noopener" style="color:var(--ink)">${esc(p)}</a></td><td class="num"><b>${fmt(c)}</b></td><td class="num">${pct}</td></tr>`;
+        }).join("")
+      : '<tr><td colspan="3" class="empty">No page clicks recorded yet.</td></tr>';
+
+    document.getElementById("daysTableBody").innerHTML = days.length
+      ? [...days].reverse().map((d) => `<tr><td>${esc(d.date)}</td><td class="num">${fmt(d.uv || 0)}</td><td class="num">${fmt(d.visits || d.uv || 0)}</td><td class="num"><b>${fmt(d.pv || 0)}</b></td></tr>`).join("")
+      : '<tr><td colspan="4" class="empty">No daily records yet.</td></tr>';
+  }
+
+  async function tryUnlock(key) {
+    try {
+      authErr.hidden = true;
+      rawData = await fetchStats(key);
+      sessionStorage.setItem(STORAGE_KEY, key);
+      authGate.hidden = true;
+      dashApp.hidden = false;
+      renderDashboard();
+    } catch {
+      sessionStorage.removeItem(STORAGE_KEY);
+      authGate.hidden = false;
+      dashApp.hidden = true;
+      authErr.hidden = false;
+    }
+  }
+
+  authForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const k = keyInput.value.trim();
+    if (k) tryUnlock(k);
+  });
+
+  const recoverBtn = document.getElementById("recover-btn");
+  const recoverMsg = document.getElementById("recoverMsg");
+  if (recoverBtn) {
+    recoverBtn.addEventListener("click", async () => {
+      recoverBtn.disabled = true;
+      recoverBtn.textContent = "Sending password to owner email…";
+      authErr.hidden = true;
+      recoverMsg.hidden = true;
+      try {
+        const r = await fetch("/api/stats/recover", { method: "POST" });
+        const d = await r.json().catch(() => ({}));
+        if (r.ok && d.ok) {
+          recoverMsg.textContent = "Password sent to your registered owner email (" + (d.sent_to || "g279***@gmail.com") + ").";
+          recoverMsg.hidden = false;
+        } else {
+          authErr.textContent = d.error || "Could not send recovery email.";
+          authErr.hidden = false;
+        }
+      } catch {
+        authErr.textContent = "Network error while sending recovery email.";
+        authErr.hidden = false;
+      } finally {
+        recoverBtn.disabled = false;
+        recoverBtn.textContent = "✉ Email Password to Owner Inbox";
+      }
+    });
+  }
+
+  rangeSel.addEventListener("change", renderDashboard);
+  refreshBtn.addEventListener("click", () => {
+    const k = sessionStorage.getItem(STORAGE_KEY);
+    if (k) tryUnlock(k);
+  });
+  lockBtn.addEventListener("click", () => {
+    sessionStorage.removeItem(STORAGE_KEY);
+    rawData = null;
+    keyInput.value = "";
+    dashApp.hidden = true;
+    authGate.hidden = false;
+  });
+
+  const saved = sessionStorage.getItem(STORAGE_KEY);
+  if (saved) tryUnlock(saved);
+})();
+</script>
+</body>
+</html>

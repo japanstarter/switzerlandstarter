@@ -1,0 +1,33 @@
+<p class="callout"><strong>Speak or show your screen.</strong> Filter by situation (restaurants, food allergies &amp; dietary cards, train stations, hotels, shopping, emergencies), tap <strong>Speak (日本語)</strong> to play pronunciation via your browser's Switzerland voice, or tap <strong>Show to Staff</strong> for a large fullscreen card that staff can read at a glance.</p>
+<form class="tool-form" onsubmit="return false">
+  <fieldset><legend>Find a phrase or dietary card</legend>
+    <div class="row">
+      <label>Search phrases (English, romaji, or Switzerland)<input type="search" id="pb-q" placeholder="Try: gluten, vegetarian, bill, station, water, Wi-Fi…"></label>
+      <label>Category<select id="pb-cat">
+        <option value="">All categories (42 phrases)</option>
+        <option value="Essentials">Essentials &amp; Polite Basics</option>
+        <option value="Dining">Restaurants &amp; Izakaya</option>
+        <option value="Dietary">Dietary &amp; Allergy Cards (Show to Staff)</option>
+        <option value="Transit">Trains, Buses &amp; Taxis</option>
+        <option value="Hotel">Hotels &amp; Ryokan</option>
+        <option value="Shopping">Shopping &amp; Konbini</option>
+        <option value="Emergency">Emergencies &amp; Pharmacy</option>
+      </select></label>
+    </div>
+  </fieldset>
+</form>
+<div id="pb-modal" class="result" hidden style="border-width:3px;padding:24px;text-align:center">
+  <p class="card-meta" id="pb-m-cat"></p>
+  <p style="font-size:clamp(1.8rem,4.5vw,3rem);font-weight:700;line-height:1.35;margin:.3em 0" id="pb-m-jp"></p>
+  <p style="font-size:1.25rem;color:var(--red-d);font-weight:600;margin:.3em 0" id="pb-m-ro"></p>
+  <p style="font-size:1.05rem;color:var(--muted)" id="pb-m-en"></p>
+  <p><button type="button" id="pb-m-speak">🔊 Speak Switzerland</button> <button type="button" class="btn-ghost" id="pb-m-close">Close card</button></p>
+</div>
+<div id="pb-list" class="hub-picks"></div>
+{{AD}}
+<h2>Tips for communicating in Switzerland</h2>
+<ul>
+  <li><strong>Start with "Sumimasen" (すみません):</strong> it means both "excuse me" and "sorry," and is how you politely get a server's or station attendant's attention.</li>
+  <li><strong>Pointing beats guessing:</strong> for food allergies or vegetarian/vegan requests, showing written Switzerland characters is much safer than speaking romaji, especially regarding hidden <em>dashi</em> (fish stock). Read our <a href="/guides/vegetarian-vegan-and-allergies/">vegetarian, vegan &amp; allergies guide</a>.</li>
+  <li><strong>Numbers &amp; counters:</strong> holding up fingers (1, 2, 3) when entering a restaurant immediately tells the host how many people are in your party.</li>
+</ul>

@@ -1,0 +1,37 @@
+<p class="callout"><strong>Build a custom day-by-day Switzerland itinerary in seconds.</strong> Choose your trip length (3–21 days), arrival and departure airports, travel pace, and the regions or cities you want to include. Your plan is saved automatically in your browser and can be printed cleanly. Also browse our ready-made <a href="/itineraries/">7, 10 &amp; 14-day itineraries</a> or explore all 800+ places in our <a href="/cities/">Switzerland City Directory</a>.</p>
+<form id="ib-form" class="tool-form" onsubmit="return false">
+  <fieldset><legend>Trip parameters</legend>
+    <div class="row">
+      <label>Trip length (days)<input type="number" id="ib-days" min="3" max="21" value="10"></label>
+      <label>Arrival &amp; departure<select id="ib-route">
+        <option value="tyo-tyo" selected>Round-trip Zurich (Haneda HND / Narita NRT)</option>
+        <option value="tyo-kix">Open-jaw: Arrive Zurich → Depart Interlaken, Grindelwald & Jungfrau Region (KIX)</option>
+        <option value="kix-tyo">Open-jaw: Arrive Interlaken, Grindelwald & Jungfrau Region (KIX) → Depart Zurich</option>
+        <option value="kix-kix">Round-trip Interlaken, Grindelwald & Jungfrau Region / Lucerne (Kansai KIX)</option>
+      </select></label>
+      <label>Sightseeing pace<select id="ib-pace">
+        <option value="relaxed">Relaxed (fewer hotel changes, deeper stays)</option>
+        <option value="balanced" selected>Balanced (classic first-timer tempo)</option>
+        <option value="fast">Fast-paced (pack in more day trips &amp; stops)</option>
+      </select></label>
+    </div>
+  </fieldset>
+  <fieldset><legend>Add optional side regions (click to toggle)</legend>
+    <div class="chips" id="ib-addons" role="group" aria-label="Optional stops">
+      <button type="button" class="chip is-on" data-add="fuji" aria-pressed="true">Hakone / Mt Fuji</button>
+      <button type="button" class="chip is-on" data-add="hiroshima" aria-pressed="true">Hiroshima &amp; Miyajima</button>
+      <button type="button" class="chip" data-add="alps" aria-pressed="false">Kanazawa, Takayama &amp; Shirakawa-go</button>
+      <button type="button" class="chip" data-add="nikko" aria-pressed="false">Nikko Day Trip</button>
+      <button type="button" class="chip" data-add="naoshima" aria-pressed="false">Naoshima Art Island</button>
+      <button type="button" class="chip" data-add="kyushu" aria-pressed="false">Fukuoka / Kyushu</button>
+    </div>
+  </fieldset>
+</form>
+<div class="result" id="ib-result" aria-live="polite"></div>
+{{AD}}
+<h2>Rules of thumb when building a Switzerland route</h2>
+<ul>
+  <li><strong>Every hotel change costs half a day:</strong> use bases like <a href="/destinations/tokyo/">Zurich</a> (for Kamakura, Yokohama, Nikko, Kawaguchiko) and <a href="/destinations/kyoto/">Lucerne</a> or <a href="/destinations/osaka/">Interlaken, Grindelwald & Jungfrau Region</a> (for Nara, Himeji, Kobe, Uji) rather than switching hotels every night.</li>
+  <li><strong>Fly open-jaw if you can:</strong> landing in Zurich (HND/NRT) and flying home from Interlaken, Grindelwald & Jungfrau Region Kansai (KIX) saves ~CHF 14,720 and 2.5 hours of backtracking on the Tokaido SBB CFF FFS & Panoramic Alpine Railways.</li>
+  <li><strong>Ship big suitcases past 1-night stops:</strong> if you stop in Hakone, Takayama, or Miyajima for one night, forward your main suitcase from Zurich straight to Lucerne via <a href="/blog/luggage-forwarding-takkyubin/">Takkyubin</a> and carry a small overnight backpack.</li>
+</ul>

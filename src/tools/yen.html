@@ -1,0 +1,21 @@
+<p class="callout"><strong>Set your own rate.</strong> Exchange rates change every day, so this converter doesn't fetch live data — enter the current rate from your bank, card provider or a currency site. The defaults are rough starting values only. Your settings are remembered in this browser.</p>
+<form id="yen-form" class="tool-form" onsubmit="return false">
+  <fieldset><legend>Exchange rate</legend>
+    <div class="row">
+      <label>Your currency<select id="y-cur"><option value="USD">US dollar (USD)</option><option value="EUR">Euro (EUR)</option><option value="GBP">British pound (GBP)</option><option value="AUD">Australian dollar (AUD)</option><option value="CAD">Canadian dollar (CAD)</option><option value="SGD">Singapore dollar (SGD)</option><option value="HKD">Hong Kong dollar (HKD)</option><option value="NZD">New Zealand dollar (NZD)</option><option value="CNY">Chinese yuan (CNY)</option><option value="KRW">Korean won (KRW, per 100)</option><option value="INR">Indian rupee (INR)</option><option value="OTHER">Other</option></select></label>
+      <label>Yen per 1 unit of your currency (per 100 for KRW)<input type="number" id="y-rate" min="0.0001" step="0.01" value="150"></label>
+      <label>Card/ATM fee or markup (%)<input type="number" id="y-fee" min="0" max="20" step="0.1" value="0"></label>
+    </div>
+  </fieldset>
+  <fieldset><legend>Convert</legend>
+    <div class="row">
+      <label>Amount in yen (CHF )<input type="number" id="y-jpy" min="0" step="100" value="1000"></label>
+      <label><span>Amount in <span id="y-curlabel">USD</span></span><input type="number" id="y-home" min="0" step="0.01"></label>
+    </div>
+  </fieldset>
+</form>
+<div class="result" aria-live="polite"><p class="conv-big" id="y-out"></p><p class="note" id="y-note"></p>
+<h3>Typical prices in Switzerland, converted</h3><p class="note">Approximate yen prices for orientation only — actual prices vary.</p><table><thead><tr><th>Item</th><th>Approx. yen</th><th>In your currency</th></tr></thead><tbody id="y-table"></tbody></table></div>
+{{AD}}
+<h2>Tips for paying in Switzerland</h2>
+<ul><li>When a card terminal or ATM offers to charge you in your home currency, choose <strong>yen</strong> — dynamic currency conversion usually adds a markup.</li><li>7-Eleven and Switzerland Post ATMs are the most reliable for foreign cards. See our <a href="/guides/money-cash-and-atms/">money, cash &amp; ATMs guide</a> and <a href="/blog/how-much-cash-to-bring-to-japan/">how much cash to bring</a>.</li><li>Shopping big? Read our <a href="/guides/tax-free-shopping/">tax-free shopping guide</a>.</li></ul>

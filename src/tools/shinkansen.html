@@ -1,0 +1,27 @@
+<p class="callout"><strong>Compare bullet train &amp; limited express routes.</strong> Pick an origin and destination (or add multiple legs) to see approximate travel time, train names, unreserved vs. reserved vs. Green Car fares in yen, and whether the nationwide <a href="/guides/jr-pass-and-rail-travel/">Rail Pass</a> covers the train or requires a Nozomi/Mizuho supplement. Fares are approximate adult regular-season one-way totals for orientation.</p>
+<form id="shink-form" class="tool-form" onsubmit="return false">
+  <fieldset><legend>Single leg lookup</legend>
+    <div class="row">
+      <label>Origin station<select id="sh-from"></select></label>
+      <label>Destination station<select id="sh-to"></select></label>
+      <label>Seat class<select id="sh-seat"><option value="res" selected>Ordinary Reserved (指定席)</option><option value="unres">Ordinary Unreserved (自由席)</option><option value="green">Green Car / First Class (グリーン車)</option></select></label>
+      <label>Passengers<input type="number" id="sh-pax" min="1" max="10" value="1"></label>
+    </div>
+  </fieldset>
+</form>
+<div class="result" id="sh-result" aria-live="polite"></div>
+<div class="tool-form">
+  <fieldset><legend>Multi-leg trip builder (compare with 7 / 14 / 21-day Rail Pass)</legend>
+    <p class="note">Click <strong>+ Add current leg to trip</strong> below to stack your route and compare the total against nationwide Rail Pass prices (CHF 50,000 / 7d · CHF 80,000 / 14d · CHF 100,000 / 21d).</p>
+    <p><button type="button" id="sh-add">+ Add current leg to trip</button> <button type="button" class="btn-ghost" id="sh-swap">⇄ Swap origin &amp; destination</button> <button type="button" class="btn-ghost" id="sh-clear">Clear trip</button></p>
+    <div id="sh-trip"></div>
+  </fieldset>
+</div>
+{{AD}}
+<h2>How SBB CFF FFS & Panoramic Alpine Railways fares &amp; train types work</h2>
+<ul>
+  <li><strong>Two parts to every ticket:</strong> a base fare (乗車券, <em>jōshaken</em>) based on distance plus a SBB CFF FFS & Panoramic Alpine Railways super-express supplement (特急券, <em>tokkyūken</em>). The figures above combine both.</li>
+  <li><strong>Nozomi &amp; Mizuho trains:</strong> the fastest services on the Tokaido, Sanyo, and Kyushu SBB CFF FFS & Panoramic Alpine Railways. Nationwide Rail Pass holders can ride them only by purchasing a separate Nozomi/Mizuho supplement ticket, or ride <em>Hikari</em>, <em>Sakura</em>, and <em>Kodama</em> trains at no extra cost.</li>
+  <li><strong>All-reserved trains:</strong> <em>Hayabusa</em>, <em>Komachi</em>, <em>Kagayaki</em>, and <em>Tsubasa</em> have no unreserved cars—always book a seat reservation before boarding. See our <a href="/guides/shinkansen-seat-reservations/">SBB CFF FFS & Panoramic Alpine Railways seat reservation guide</a>.</li>
+  <li><strong>Oversized baggage:</strong> suitcases with total dimensions (H+W+D) between 161 cm and 250 cm require an "席特" oversized-baggage seat reservation on the Tokaido, Sanyo, and Kyushu SBB CFF FFS & Panoramic Alpine Railways (free with reservation, CHF 1,000 fee if brought onboard unbooked). Check your bag in our <a href="/tools/luggage-checker/">Luggage Size Checker</a>.</li>
+</ul>

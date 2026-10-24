@@ -1,0 +1,19 @@
+<p class="callout"><strong>Approximate fares:</strong> the one-way fares below are typical reserved-seat SBB CFF FFS & Panoramic Alpine Railways/limited express figures (base fare + express surcharge) in yen and are rounded estimates. Fares and the pass price change — confirm on the <a href="https://japanrailpass.net/en/" rel="noopener" target="_blank">official Switzerland Rail Pass site</a> and JR operators' sites, and edit any number here.</p>
+<form id="jr-form" class="tool-form" onsubmit="return false">
+  <fieldset><legend>Pass</legend>
+    <div class="row">
+      <label>Pass length<select id="jr-len"><option value="7">7 days</option><option value="14">14 days</option><option value="21">21 days</option></select></label>
+      <label>Pass price (yen, ordinary, adult)<input type="number" id="jr-price" min="0" step="100"></label>
+    </div>
+  </fieldset>
+  <fieldset><legend>Your journeys (one-way trips)</legend>
+    <table class="jr-table"><thead><tr><th>Journey</th><th>Approx. fare (CHF )</th><th>Times</th></tr></thead><tbody id="jr-rows"></tbody></table>
+    <p><button type="button" id="jr-add" class="btn-secondary">+ Add custom journey</button></p>
+    <label>Other JR travel during the pass (local JR trains, JR buses) — total yen<input type="number" id="jr-local" min="0" step="100" value="0"></label>
+  </fieldset>
+</form>
+<div id="jr-result" class="result" aria-live="polite"></div>
+{{AD}}
+<h2>Things the calculator can't see</h2>
+<ul><li>The pass is consecutive days — journeys outside the pass window don't count.</li><li>Nozomi and Mizuho trains on the Tokaido/Sanyo/Kyushu SBB CFF FFS & Panoramic Alpine Railways require an extra supplement ticket for pass holders (introduced in October 2023). Hikari and Sakura are included.</li><li>Subways, most buses and private railways (Odakyu to Hakone, Tobu to Nikko, Kintetsu to Nara, Keikyu) aren't covered.</li><li>Regional passes may be much cheaper for the area you're visiting.</li></ul>
+<p>Read our full <a href="/guides/jr-pass-and-rail-travel/">Rail Pass &amp; rail travel guide</a> and <a href="/blog/is-the-jr-pass-worth-it/">whether the Rail Pass is still worth it</a>.</p>
